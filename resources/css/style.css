@@ -1,0 +1,82 @@
+/* resources/css/style.css */
+
+/* PHSG */
+@import '../design/dist/tokens.css';
+
+/* Reveal Core & Theme importieren */
+@import 'reveal.js/reset.css';
+@import 'reveal.js/reveal.css';
+@import 'reveal.js/theme/white.css';
+@import 'reveal.js/plugin/highlight/monokai.css';
+
+/* --- Dein Custom Styling für die Hochschule --- */
+:root {
+    --phsg-blue: #003366;
+}
+
+div, p, blockquote, li {
+    font-family: var(--font-body);
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+    font-family: var(--font-heading);
+}
+
+.reveal .slides section.chapter-slide {
+    background-color: var(--phsg-blue);
+    color: white;
+}
+
+/* Styling für die neue Sidebar-Navigation */
+.presentation-sidebar {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 200px;
+    background: rgba(255,255,255,0.9);
+    z-index: 20; /* Über den Folien */
+    padding: 1rem;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+}
+
+/* Hover am linken Rand blendet die Sidebar ein */
+.reveal:hover .presentation-sidebar {
+    transform: translateX(0);
+}
+
+.presentation-sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.presentation-sidebar li {
+    cursor: pointer;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Styling für deinen Timer */
+.presentation-timer {
+    background: #f0f0f0;
+    padding: 10px;
+    border-radius: 5px;
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+    font-family: monospace;
+    font-size: 1.5rem;
+}
+
+.presentation-timer.timer-done {
+    background: #ffcccc;
+    color: red;
+    animation: pulse 1s infinite;
+}

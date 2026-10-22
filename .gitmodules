@@ -1,0 +1,3 @@
+[submodule "resources/design"]
+	path = resources/design
+	url = git@github.com:PHSG-IDIB/Admin-PhsgDesign.git

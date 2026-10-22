@@ -1,5 +1,9 @@
 content/
 
+public/build/
+
+node_modules
+
 # Zugangsdaten
 .env
 

@@ -3,6 +3,8 @@
 class Renderer {
 
     public function renderPresentation(string $markdown): void {
+        $fontsPath = __DIR__ . '/../resources/design/fonts.html';
+        $fontsHtml = file_exists($fontsPath) ? file_get_contents($fontsPath) : '';
         ?>
         <!doctype html>
         <html lang="de">
@@ -11,12 +13,11 @@ class Renderer {
             <title>Präsentation</title>
             <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-            <!-- Reveal.js CSS -->
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/reset.css">
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/reveal.css">
-            <link rel="stylesheet" href="/assets/css/hochschule-theme.css" id="theme">
+            <!-- PHSG Webfonts (Platypi + Albert Sans) -->
+            <?php echo $fontsHtml; ?>
 
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/monokai.min.css">
+            <!-- Unser kompiliertes CSS von Vite (inkl. tokens.css) -->
+            <link rel="stylesheet" href="/build/style.css">
         </head>
         <body>
         <div class="reveal">
@@ -29,19 +30,8 @@ class Renderer {
             </div>
         </div>
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/reveal.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/plugin/markdown/markdown.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/plugin/highlight/highlight.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/plugin/math/math.js"></script>
-
-        <script>
-            Reveal.initialize({
-                hash: true,
-                slideNumber: true,
-                plugins: [ RevealMarkdown, RevealHighlight, RevealMath.KaTeX ]
-            });
-        </script>
-        <script src="/assets/js/custom-presentation.js"></script>
+        <!-- Unser kompiliertes Javascript von Vite (als Modul) -->
+        <script type="module" src="/build/main.js"></script>
         </body>
         </html>
         <?php
