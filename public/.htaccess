@@ -1,0 +1,15 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Optional: Basis-Verzeichnis festlegen (oft nützlich, wenn die App in einem Unterordner läuft)
+    # RewriteBase /
+
+    # 1. Wenn die angefragte URL eine real existierende Datei ist (z.B. CSS, JS, Bilder in /public) -> direkt ausliefern
+    RewriteCond %{REQUEST_FILENAME} !-f
+
+    # 2. Wenn die angefragte URL ein real existierendes Verzeichnis in /public ist -> direkt ausliefern
+    RewriteCond %{REQUEST_FILENAME} !-d
+
+    # 3. Alles andere (z.B. /informatik/webtechnologien/hs27) an die index.php weiterleiten
+    RewriteRule ^(.*)$ index.php [QSA,L]
+</IfModule>

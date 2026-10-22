@@ -1,0 +1,15 @@
+content/
+
+# Zugangsdaten
+.env
+
+# Betriebssystem
+.DS_Store
+Thumbs.db
+
+# Editoren
+.vscode/
+.idea/
+*.code-workspace
+
+
